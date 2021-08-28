@@ -1,0 +1,19 @@
+string s1 = "fam";
+  string s2 = "ily";
+  s1.append(s2);
+  cout<<s1<<endl;
+stack<char> s;
+
+  for(auto it : s1)
+  {
+    s.push(it);
+  }
+  string s3;
+  while(!s.empty())
+  {
+    cout<<s.top();
+    s3 += s.top();
+    s.pop();
+  }
+  cout<<endl;
+  cout<<s1.compare(s3)<<endl;
