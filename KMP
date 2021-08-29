@@ -1,0 +1,26 @@
+void kmp(string txt, string pat)
+{
+  int n = pat.length();
+  int lps[n];
+  fillLPS(pat,lps);
+  int i = 0, j = 0;
+  while(i<txt.length())
+  {
+    if(txt[i] == pat[j])
+    {
+      i++;j++;
+    }
+    else 
+    {
+      if(j == 0) i++;
+      else{
+        j = lps[j-1];
+      }
+    }
+    // MAIN PART
+    if(j == n) 
+    {
+      cout<<(i - j)<<endl;
+      j = lps[j-1];
+    }
+  }
