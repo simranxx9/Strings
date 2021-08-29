@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+bool is_anagram(string txt, string pat, int i)
+{
+    int mp[256] = {0};
+    for(int j = 0; j < txt.length() ; j++)
+    {
+        // cout<<pat[i]<<" "<<txt[i+j]<<endl;
+        mp[pat[i++]]++;
+        mp[txt[i+j]]--;
+    }
+   
+    for(int j = 0 ; j<pat.length(); j++)
+    {
+        cout<<mp[pat[j]]<<endl;
+        if(mp[pat[j]]!=0)
+            return false;
+    }
+    return true;
+}
+
+bool search_anagram(string txt, string pat)
+{
+    int m = txt.length();
+    int n = pat.length();
+    for(int i =0;i<m-n+1; i++)
+    {
+        if(is_anagram(txt, pat, i))
+            return true;
+    }
+    return false;
+}
+
+int main()
+{
+    string txt = "geeksforgeeks";
+    string pat = "frogsk";
+    if(search_anagram(txt, pat))    cout<<"TRUE";
+    else    cout<<"FAlse";
+    return 0;
+}
