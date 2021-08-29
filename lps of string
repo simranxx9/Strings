@@ -1,0 +1,42 @@
+      #include<bits/stdc++.h>
+using namespace std;
+
+void fillLPS(string str, int *lps)
+{
+  int len = 0;
+  lps[0] = 0;
+  int i = 1;
+  while(i<str.length())
+  {
+    if(str[i] == str[len])
+    {
+      len++;  lps[i] = len; i++;
+    }
+    else{
+      if(len == 0)
+      {
+        lps[i] = len; i++;
+      }
+      else{
+        len = lps[len - 1];
+      }
+    }
+  }
+  
+}
+
+int main()
+{
+  string txt = "aaacaaaa";
+  cout<<txt<<endl;
+  string pat = "aba";
+  int n = txt.length();
+  int lps[n];
+  fillLPS(txt,lps);
+  for(int it: lps)
+  {
+    cout<<it<<" ";
+  }
+  cout<<endl;
+  return 0;
+}
